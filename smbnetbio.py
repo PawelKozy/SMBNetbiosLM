@@ -3,7 +3,7 @@ from impacket.dcerpc.v5 import transport, scmr
 
 def create_service_and_run(remote_host, username, password, domain, service_name, executable_path):
     # Establish SMB Connection using the same remote_host for simplicity
-    conn = SMBConnection(remote_host, remote_host, sess_port=139)
+    conn = SMBConnection(remote_net, remote_host, sess_port=139)
     conn.login(username, password, domain=domain)
 
     # Set up the transport for the DCERPC session over SMB
@@ -34,6 +34,7 @@ def create_service_and_run(remote_host, username, password, domain, service_name
 target_ip = '192.168.1.100'
 username = 'admin'
 password = 'password'
+remote_net = "hostname"
 domain = 'DOMAIN'
 service_name = 'MyRemoteService'
 executable_path = r'C:\Windows\System32\notepad.exe'
